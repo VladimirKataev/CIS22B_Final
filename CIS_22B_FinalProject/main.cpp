@@ -27,9 +27,10 @@ int main() {
 	*/
 	Book* arr = readFile("DATA.txt");
 	int selection;
-	int numBooks;
+	int numBooks=2;
 	string textIn;
-	selectionSort(arr, 2);
+	int bookToChange;
+	selectionSort(arr, numBooks);
 	/*
 	for (int i = 0; i < 2; i++)
 	{
@@ -86,6 +87,39 @@ int main() {
 		}
 		else if (selection == 2)
 		{
+			cout << "Enter a Decision:\n1:Change a book's parameters\n2:Add a book\n3:Go Back\n:";
+			cin >> selection;
+			if(selection == 1){
+				for (int a = 0; a < 2; a++){
+					cout << "1:ISBN|2:TITLE|3:AUTHOR|4:PUBLISHER|5:QUANTITY|6:WHOLESALE COST|7:RETAIL PRICE|8:DATE PUBLISHED|9:DATE ADDED\n"
+					cout << a + 1 << ":" << arr[a].toString() << endl;
+				}
+				cout << "Select Book number to Change:"; cin >> bookToChange; bookToChange--;				
+				cout << "Select argument number to Change:"; cin >> selection;
+				switch(selection){
+					case 1:
+						cout << "Enter new value for ISBN:"; cin >> textIn; arr[bookToChange].setISBN(textIn); break;
+					case 2:
+						cout << "Enter new value for Title:"; cin >> textIn; arr[bookToChange].setTitle(textIn);break;
+					case 3:
+						cout << "Enter new value for Author:"; cin >> textIn; arr[bookToChange].setAuthor(textIn);break;					case 1:
+					case 4:
+						cout << "Enter new value for Publisher:"; cin >> textIn; arr[bookToChange].setPublisher(textIn);break;					case 1:
+					case 5:
+						cout << "Enter new value for Quantity:"; cin >> textIn; arr[bookToChange].setQuantity(textIn);break;					case 1:
+					case 6:
+						cout << "Enter new value for Wholesale Cost:"; cin >> textIn; arr[bookToChange].setWholeSaleCost(textIn); break;					case 1:
+					case 7:
+						cout << "Enter new value for Retail Price:"; cin >> textIn; arr[bookToChange].setRetailPrice(textIn);break;					case 1:
+					case 8:
+						cout << "Enter new value for Date Published:"; cin >> textIn; arr[bookToChange].setPublished(Date(textIn));break;					case 1:
+					case 9:
+						cout << "Enter new value for Date Added:"; cin >> textIn; arr[bookToChange].setAdded(Date(textIn));break;					case 1:
+
+				}
+			
+			}
+			/*
 			for (int a = 0; a < 2; a++)
 				cout << a + 1 << ":" << arr[a].getTitle() << ":" << arr[a].getQuantity() << endl;
 			do {
@@ -99,6 +133,7 @@ int main() {
 			} while (!(selection >= 0));
 
 			arr[numBooks].setQuantity(selection);
+			*/
 		}
 	} while (selection != 4);
 	writeFile("PROOF.txt", arr);
